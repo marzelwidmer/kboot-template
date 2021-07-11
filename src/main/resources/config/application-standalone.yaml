@@ -1,0 +1,8 @@
+spring:
+  config:
+    activate:
+      on-profile: standalone
+
+logging:
+  level:
+    root: INFO

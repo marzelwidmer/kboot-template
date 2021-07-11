@@ -1,0 +1,25 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+metadata:
+  name: demo-service
+build:
+  artifacts:
+    - image: demo-service
+      jib:
+        args:
+          - -DskipTests=true
+          - -Pjib,integration,contracts,documentation
+        type: maven
+  tagPolicy:
+    sha256: { }
+deploy:
+  kustomize:
+    paths:
+      - k8s/installs/minikube
+profiles:
+  - name: minikube
+    deploy:
+      kustomize:
+        paths:
+          - k8s/installs/minikube
+      kubeContext: minikube
