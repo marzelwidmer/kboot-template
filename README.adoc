@@ -1,0 +1,24 @@
+:toc: left
+:doctype: book
+:sectanchors:
+:copyright: ©
+:dot: .
+:ellipsis: …
+:hatch: #
+:pilcrow: ¶
+:star: *
+:tilde: ~
+:ul: _
+:revnumber: {project-version}
+ifndef::imagesdir[:imagesdir: src/asciidoc/docs/images]
+ifndef::resourcesdir[:resourcesdir: src/asciidoc/resources]
+
+# Kboot Template Project
+
+```bash
+skaffold run
+```
+
+```bash
+SPRING_PROFILES_ACTIVE=standalone mvn clean spring-boot:run
+```

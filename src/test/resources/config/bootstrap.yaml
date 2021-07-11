@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: demo-service
+
+  cloud:
+    kubernetes:
+      enabled: false
+    config:
+      enabled: false
+      discovery:
+        enabled: false

@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+set -e
+
+cli_help() {
+  cli_name=${0##*/}
+  echo "
+$cli_name
+
+c3s CLI
+
+Commands:
+  compileOnly                               Compile only
+  unitTestsOnly                             Run Unit tests only
+  ---------------------------------------------------------------------------------------
+  generateDocumentation                     Generate asciidoc
+  ---------------------------------------------------------------------------------------
+  convertContractTest                       Convert Contract Tests
+  generateContractTest                      Generate Contract Tests
+  runContractStubsTest                      Convert Contract, Generate and Run Contract Stubs
+  ---------------------------------------------------------------------------------------
+  runAll                                    Run Integration and Contracts tests
+  runAllWithDocs                            Run Integration and Contracts test and generate documentation
+  ---------------------------------------------------------------------------------------
+  buildDockerImage                          Create docker image
+  *                                         Help
+"
+  exit 1
+}
+
+case "$1" in
+  compileOnly)
+    "./scripts/compileOnly.sh"
+    ;;
+  unitTestsOnly)
+    "./scripts/unitTestsOnly.sh"
+    ;;
+   convertContractTest)
+    "./scripts/convertContractTest.sh"
+    ;;
+  generateDocumentation)
+    "./scripts/generateDocumentation.sh"
+    ;;
+  generateContractTest)
+    "./scripts/generateContractTest.sh"
+    ;;
+  runContractStubsTest)
+    "./scripts/runContractStubsTest.sh"
+    ;;
+  runAll)
+    "./scripts/runAll.sh"
+    ;;
+  runAllWithDocs)
+    "./scripts/runAllWithDocs.sh"
+    ;;
+  buildDockerImage)
+    "./scripts/buildDockerImage.sh"
+    ;;
+  *)
+    cli_help
+    ;;
+esac

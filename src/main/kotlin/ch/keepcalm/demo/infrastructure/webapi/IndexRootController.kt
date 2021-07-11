@@ -1,0 +1,25 @@
+package ch.keepcalm.demo.infrastructure.webapi
+
+import kotlinx.coroutines.reactive.awaitSingle
+import org.springframework.hateoas.EntityModel
+import org.springframework.hateoas.MediaTypes
+import org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.linkTo
+import org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.methodOn
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
+
+@RestController
+class IndexRootController {
+
+    companion object REL {
+        const val API_DOCS_REL = "documentation"
+        const val API_FOOBAR_REL = "foobar"
+    }
+
+    @GetMapping("/", produces = [MediaTypes.HAL_JSON_VALUE])
+    suspend fun index(): EntityModel<Unit> {
+        return EntityModel.of(Unit, linkTo(methodOn(IndexRootController::class.java).index()).withSelfRel().toMono().awaitSingle())
+            .add(linkTo(methodOn(IndexRootController::class.java).index()).slash("/api-docs/manual.html").withRel(API_DOCS_REL).toMono().awaitSingle())
+            .add(linkTo(methodOn(FooBarController::class.java).fooBar()).withRel(API_FOOBAR_REL).toMono().awaitSingle())
+    }
+}

@@ -1,0 +1,7 @@
+include::_header.ad[]
+
+= Use Case
+
+ifndef::resourcesdir[:resourcesdir: ../resources]
+plantuml::{resourcesdir}/diagram/_Usecase.puml[png]
+
