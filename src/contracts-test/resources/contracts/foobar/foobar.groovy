@@ -15,9 +15,9 @@ import org.springframework.cloud.contract.spec.Contract
         request {
             method "GET"
             urlPath("/foobar")
-            cookies {
-                cookie "KBoot": data.accountId
-            }
+//            cookies {
+//                cookie "KBoot": data.accountId
+//            }
         }
         response {
             status OK()
