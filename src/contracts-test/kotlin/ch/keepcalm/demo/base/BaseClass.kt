@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext
 import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
 import org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint
+import org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.document
 import org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.documentationConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
@@ -32,16 +33,21 @@ abstract class BaseClass {
 
     @BeforeEach
     fun setUp(restDocumentation: RestDocumentationContextProvider?) {
-        runBlocking {
-            webTestClient = WebTestClient.bindToApplicationContext(applicationContext)
-                .configureClient()
-                .filter(
-                    documentationConfiguration(restDocumentation)
-                        .operationPreprocessors()
-                        .withRequestDefaults(prettyPrint())
-                        .withResponseDefaults(prettyPrint())
-                )
-                .build()
-        }
+        this.webTestClient = WebTestClient.bindToApplicationContext(applicationContext)
+            .configureClient()
+            .filter(documentationConfiguration(restDocumentation))
+            .entityExchangeResultConsumer(document("{method-name}/{step}"))
+            .build()
+//        runBlocking {
+//            webTestClient = WebTestClient.bindToApplicationContext(applicationContext)
+//                .configureClient()
+//                .filter(
+//                    documentationConfiguration(restDocumentation)
+//                        .operationPreprocessors()
+//                        .withRequestDefaults(prettyPrint())
+//                        .withResponseDefaults(prettyPrint())
+//                )
+//                .build()
+//        }
     }
 }
