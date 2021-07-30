@@ -5,14 +5,11 @@
 // Settings
 :idprefix:
 :idseparator: -
-//:source-highlighter: rouge
-//:source-highlighter: coderay
-//:toc: left
-:toc:
+:toc: left
 :icons: font
 :source-highlighter: prettify
-:project_id: {project-name}
-
+//:source-highlighter: rouge
+//:source-highlighter: coderay
 :toclevels: 3
 :doctype: book
 :sectanchors:
@@ -26,6 +23,7 @@
 :ul: _
 
 
+:project_id: {project-name}
 :revnumber: {project-version}
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/kotlin]

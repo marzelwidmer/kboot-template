@@ -20,4 +20,3 @@ class DemoApplicationService {
 fun main(args: Array<String>) {
     runApplication<DemoApplicationService>(*args)
 }
-
