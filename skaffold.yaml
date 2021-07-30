@@ -7,7 +7,6 @@ build:
     - image: demo-service
       jib:
         args:
-          - -DskipTests=false
           - -Pjib,integration,contracts,documentation
         type: maven
   tagPolicy:
@@ -25,7 +24,6 @@ profiles:
         - image: c3smonkey.azurecr.io/demo-service
           jib:
             args:
-              - -DskipTests=true
               - -Pjib,contracts,documentation
               - -Dimage=c3smonkey.azurecr.io/demo-service
     deploy:
