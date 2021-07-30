@@ -15,9 +15,24 @@ ifndef::resourcesdir[:resourcesdir: src/asciidoc/resources]
 
 # Kboot Template Project
 
+
+## Minikube Deployment
 ```bash
 skaffold run
 ```
+
+## AKS Deployment
+
+### PreCondition
+CAUTION: Traefik have to be installed for the Ingress Deployment
+
+```bash
+skaffold run -p aks
+```
+
+http://aks.c3smonkey.ch/demo[http://aks.c3smonkey.ch/demo]
+
+## Start Local
 
 ```bash
 SPRING_PROFILES_ACTIVE=standalone mvn clean spring-boot:run
