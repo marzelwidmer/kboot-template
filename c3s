@@ -16,6 +16,8 @@ options=(
   "Run Integration and Contracts Tests"
   "Run Integration and Contracts Test and generate Documentation"
   "Create Docker Image"
+  "Login AKS Container Registry"
+  "Deploy to AKS"
   "Quit"
 )
 select opt in "${options[@]}"
@@ -98,6 +100,18 @@ do
             break
             ;;
 
+
+        "Login AKS Container Registry")
+
+            "./scripts/loginAKSContainerRegistry.sh"
+            break
+            ;;
+
+        "Deploy to AKS")
+
+            "./scripts/deployToAKS.sh"
+            break
+            ;;
 
         "Quit")
             break
