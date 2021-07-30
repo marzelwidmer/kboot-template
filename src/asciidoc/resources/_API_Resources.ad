@@ -1,4 +1,4 @@
-include::_header.ad[]
+include::_attributes.adoc[]
 
 [[overview_hypermedia]]
 = Hypermedia - API

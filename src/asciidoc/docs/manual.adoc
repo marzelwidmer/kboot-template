@@ -1,9 +1,11 @@
 ifndef::resourcesdir[:resourcesdir: ../resources]
-include::{resourcesdir}/_header.ad[leveloffset=2]
+include::{resourcesdir}/_attributes.adoc[leveloffset=2]
+
+
 
 = {project-name} User Guide
 
-The {project-name} is based on an `HATEOAS` and `HAL` rules.
+NOTE: The {project-name} is based on an `HATEOAS` and `HAL` rules.
 The entry point of the {project-name} is on the <<resources_index>>.
 
 

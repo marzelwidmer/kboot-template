@@ -1,61 +1,107 @@
 #!/usr/bin/env bash
-set -e
 
-cli_help() {
-  cli_name=${0##*/}
-  echo "
-$cli_name
+echo "----------------------------------------------------------------------------------------"
+echo ":: c3smonkey CLI"
+echo "----------------------------------------------------------------------------------------"
 
-c3s CLI
 
-Commands:
-  compileOnly                               Compile only
-  unitTestsOnly                             Run Unit tests only
-  ---------------------------------------------------------------------------------------
-  generateDocumentation                     Generate asciidoc
-  ---------------------------------------------------------------------------------------
-  convertContractTest                       Convert Contract Tests
-  generateContractTest                      Generate Contract Tests
-  runContractStubsTest                      Convert Contract, Generate and Run Contract Stubs
-  ---------------------------------------------------------------------------------------
-  runAll                                    Run Integration and Contracts tests
-  runAllWithDocs                            Run Integration and Contracts test and generate documentation
-  ---------------------------------------------------------------------------------------
-  buildDockerImage                          Create docker image
-  *                                         Help
-"
-  exit 1
-}
+PS3='Please enter your choice: '
+options=(
+  "Compile Only"
+  "Run Unit Tests Only"
+  "Generate Asciidoc"
+  "Convert Contract Tests"
+  "Generate Contract Tests"
+  "Convert Contract, Generate and Run Contract Stubs"
+  "Run Integration and Contracts Tests"
+  "Run Integration and Contracts Test and generate Documentation"
+  "Create Docker Image"
+  "Quit"
+)
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Compile Only")
+            echo ""
+            echo ": Compile Project :"
+            echo "-------------------"
+            "./scripts/compileOnly.sh"
+            break
+            ;;
 
-case "$1" in
-  compileOnly)
-    "./scripts/compileOnly.sh"
-    ;;
-  unitTestsOnly)
-    "./scripts/unitTestsOnly.sh"
-    ;;
-   convertContractTest)
-    "./scripts/convertContractTest.sh"
-    ;;
-  generateDocumentation)
-    "./scripts/generateDocumentation.sh"
-    ;;
-  generateContractTest)
-    "./scripts/generateContractTest.sh"
-    ;;
-  runContractStubsTest)
-    "./scripts/runContractStubsTest.sh"
-    ;;
-  runAll)
-    "./scripts/runAll.sh"
-    ;;
-  runAllWithDocs)
-    "./scripts/runAllWithDocs.sh"
-    ;;
-  buildDockerImage)
-    "./scripts/buildDockerImage.sh"
-    ;;
-  *)
-    cli_help
-    ;;
-esac
+        "Run Unit Tests Only")
+            echo ""
+            echo ": Run Unit Test :"
+            echo "-----------------"
+            "./scripts/unitTestsOnly.sh"
+            break
+            ;;
+
+        "Generate Asciidoc")
+            echo ""
+            echo ": Generate Asciidoc :"
+            echo "---------------------"
+            "./scripts/generateDocumentation.sh"
+            break
+            ;;
+
+        "Convert Contract Tests")
+            echo ""
+            echo ": Convert Contract Tests :"
+            echo "--------------------------"
+            "./scripts/convertContractTest.sh"
+            break
+            ;;
+
+
+        "Generate Contract Tests")
+            echo ""
+            echo ": Generate Contract Tests :"
+            echo "---------------------------"
+            "./scripts/generateContractTest.sh"
+            break
+            ;;
+
+
+        "Convert Contract, Generate and Run Contract Stubs")
+            echo ""
+            echo ": Convert Contract, Generate and Run Contract Stubs :"
+            echo "-----------------------------------------------------"
+            "./scripts/runContractStubsTest.sh"
+            break
+            ;;
+
+
+        "Run Integration and Contracts Tests")
+            echo ""
+            echo ": Run Integration and Contracts Tests :"
+            echo "---------------------------------------"
+            "./scripts/runAll.sh"
+            break
+            ;;
+
+
+        "Run Integration and Contracts Test and generate Documentation")
+            echo ""
+            echo ": Run Integration and Contracts Test and generate Documentation :"
+            echo "-----------------------------------------------------------------"
+            "./scripts/runAllWithDocs.sh"
+            break
+            ;;
+
+
+        "Create Docker Image")
+            echo ""
+            echo ": Create Docker Image :"
+            echo "-----------------------"
+            "./scripts/buildDockerImage.sh"
+            break
+            ;;
+
+
+        "Quit")
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done

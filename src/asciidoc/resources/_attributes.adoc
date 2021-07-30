@@ -1,14 +1,18 @@
-:stylesdir: css
-//:stylesheet: ascii-default.css
-//:stylesheet: dark.css
-//:stylesheet: gazette.css
-//:stylesheet: material-teal.css
-//:stylesheet: monospace.css
-//:stylesheet: notebook.css
+:attachmentsdir: {moduledir}/assets/attachments
+:examplesdir: {moduledir}/examples
+:imagesdir: {moduledir}/assets/images
+:partialsdir: {moduledir}/pages/_partials
+// Settings
+:idprefix:
+:idseparator: -
+//:source-highlighter: rouge
+//:source-highlighter: coderay
+//:toc: left
+:toc:
+:icons: font
+:source-highlighter: prettify
+:project_id: {project-name}
 
-:source-highlighter: rouge
-:source-highlighter: coderay
-:toc: left
 :toclevels: 3
 :doctype: book
 :sectanchors:
@@ -20,6 +24,8 @@
 :star: *
 :tilde: ~
 :ul: _
+
+
 :revnumber: {project-version}
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/kotlin]
