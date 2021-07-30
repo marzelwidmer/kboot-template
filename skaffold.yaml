@@ -24,7 +24,7 @@ profiles:
         - image: c3smonkey.azurecr.io/demo-service
           jib:
             args:
-              - -Pjib,contracts,documentation
+              - -Pjib,integration,contracts,documentation
               - -Dimage=c3smonkey.azurecr.io/demo-service
     deploy:
       kustomize:
