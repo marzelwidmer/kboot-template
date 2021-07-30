@@ -1,3 +1,29 @@
+#apiVersion: skaffold/v2beta16
+#kind: Config
+#metadata:
+#  name: demo-service
+#build:
+#  artifacts:
+#    - image: demo-service
+#      jib:
+#        args:
+#          - -DskipTests=true
+#          - -Pjib,integration,contracts,documentation
+#        type: maven
+#  tagPolicy:
+#    sha256: { }
+#deploy:
+#  kustomize:
+#    paths:
+#      - k8s/installs/minikube
+#profiles:
+#  - name: minikube
+#    deploy:
+#      kustomize:
+#        paths:
+#          - k8s/installs/minikube
+#      kubeContext: minikube
+
 apiVersion: skaffold/v2beta16
 kind: Config
 metadata:
@@ -12,14 +38,74 @@ build:
         type: maven
   tagPolicy:
     sha256: { }
+
 deploy:
   kustomize:
     paths:
       - k8s/installs/minikube
+
 profiles:
-  - name: minikube
+  - name: aks
+    build:
+      artifacts:
+        - image: c3smonkey.azurecr.io/demo-service
+          jib:
+            args:
+              - -DskipTests=true
+              - -Pjib,contracts,documentation
+              - -Dimage=c3smonkey.azurecr.io/demo-service
     deploy:
       kustomize:
         paths:
-          - k8s/installs/minikube
+          - k8s/installs/aks
+
+
+
+
+
+
+
+  - name: local
+    deploy:
+      kustomize:
+        paths:
+          - k8s/installs/dmz2/local
       kubeContext: minikube
+
+  - name: playground-az
+    build:
+      artifacts:
+        - image: registry.osp-appl-preprod.hel.kko.ch/myhelsana-playground-az/registrierung-service
+          jib:
+            args:
+              - -DskipTests=true
+              - -Pjib,contracts,documentation
+              - -Djib.from.image=registry.osp-appl-preprod.hel.kko.ch/myhelsana-playground-az/openjdk-11:1.3
+              - -Dimage=registry.osp-appl-preprod.hel.kko.ch/myhelsana-playground-az/registrierung-service
+      insecureRegistries:
+        - registry.osp-appl-preprod.hel.kko.ch
+      tagPolicy:
+        sha256: { }
+    deploy:
+      kustomize:
+        paths:
+          - k8s/installs/playground
+  - name: myhelsana-preprod-dmz2
+    build:
+      artifacts:
+        - image: registry.osp-appl-preprod.hel.kko.ch/myhelsana-preprod-dmz2/registrierung-service
+          jib:
+            args:
+              - -DskipTests=true
+              - -Pjib,contracts,documentation
+              - -Djib.from.image=registry.osp-appl-preprod.hel.kko.ch/myhelsana-build-dz/openjdk-11:1.3
+              - -Dimage=registry.osp-appl-preprod.hel.kko.ch/myhelsana-preprod-dmz2/registrierung-service
+            fromImage: registry.osp-appl-preprod.hel.kko.ch/myhelsana-build-dz/openjdk-11:1.3
+      insecureRegistries:
+        - registry.osp-appl-preprod.hel.kko.ch
+      tagPolicy:
+        sha256: { }
+    deploy:
+      kustomize:
+        paths:
+          - k8s/installs/dmz2/preprod
