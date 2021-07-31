@@ -1,4 +1,10 @@
+// Settings
+:idprefix:
+:idseparator: -
 :toc: left
+:icons: font
+:source-highlighter: prettify
+:toclevels: 3
 :doctype: book
 :sectanchors:
 :copyright: ©
@@ -9,20 +15,20 @@
 :star: *
 :tilde: ~
 :ul: _
-:revnumber: {project-version}
 ifndef::imagesdir[:imagesdir: src/asciidoc/docs/images]
 ifndef::resourcesdir[:resourcesdir: src/asciidoc/resources]
 
-# Kboot Template Project
 
-## Minikube Deployment
+= Kboot Template Project
+
+== Minikube Deployment
 ```bash
 skaffold run
 ```
 
-## AKS Deployment
+== AKS Deployment
 
-### PreCondition
+=== PreCondition
 CAUTION: Traefik have to be installed for the Ingress Deployment
 
 ```bash
@@ -31,17 +37,35 @@ skaffold run -p aks
 
 http://aks.c3smonkey.ch/demo[http://aks.c3smonkey.ch/demo]
 
-## Start Local
+== Start Local
 
 ```bash
 SPRING_PROFILES_ACTIVE=standalone mvn clean spring-boot:run
 ```
 
 
+= Clean- Onion- Hexagonal Architecture
 
-# Clean- Onion- Hexagonal Architecture
+NOTE: See: https://dev.to/danielrusnok/onion-architecture-or-how-to-not-make-spaghetti-244b[https://dev.to/danielrusnok/onion-architecture-or-how-to-not-make-spaghetti-244b,role=external,window=_blank] Core of application is defined by tasks or Bussiness rules, which application should fulfil.
 
-image:CleanArchitecture.png[Ports Adapters]
+image:OnionArchitecture.png[OnionArchitecture]
+
+== Application layer
+The core called Application contains every work done with entities or value objects. In the introduction, I talked about tasks or business rules. Example of business rule could be a task "Save customer." But wait, such a rule will have to work with the database. And at the introduction, we made it clear that the database should not be a part of the application's core. So where is the database?
+
+
+=== Domain
+=== Application
+
+== Presentation layer
+Client API can be found in the _Presentation_ _layer_
+
+== Persistence layer
+Database can be found in the _Persistence_ _layer_ (MongoDB, In-Memory DB etc.)
+
+== Infrastructure layer
+Communication with external technologies/Systems is placed in the _Infrastructure_ _layer_
+
 
 [source,bash]
 .Top Level Source Folder Structure
