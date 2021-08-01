@@ -32,7 +32,23 @@ skaffold run
 CAUTION: Traefik have to be installed for the Ingress Deployment
 
 ```bash
-skaffold run -p aks
+./c3s
+----------------------------------------------------------------------------------------
+:: c3smonkey CLI
+----------------------------------------------------------------------------------------
+ 1) Compile Only
+ 2) Run Unit Tests Only
+ 3) Generate Asciidoc
+ 4) Convert Contract Tests
+ 5) Generate Contract Tests
+ 6) Convert Contract, Generate and Run Contract Stubs
+ 7) Run Integration and Contracts Tests
+ 8) Run Integration and Contracts Test and generate Documentation
+ 9) Create Docker Image
+10) Login AKS Container Registry
+11) Deploy to AKS
+12) Quit
+Please enter your choice:
 ```
 
 http://aks.c3smonkey.ch/demo[http://aks.c3smonkey.ch/demo]
