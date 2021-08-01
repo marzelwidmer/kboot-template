@@ -107,8 +107,6 @@ Communication with external technologies/Systems is placed in the _Infrastructur
     │   └── mongo <5>
     ├── webapi <6>
     └── webclient <7>
-        ├── bestelleRegistrationsCode
-        └── validiereFamilenvorstand
 ----
 
 <1> Application services responsible for providing access to the domain to external clients. An application service orchestrates use cases, but does not contain business logic.
