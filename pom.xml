@@ -21,7 +21,7 @@
 		<graphvizdot>/usr/local/bin/dot</graphvizdot>
 
 		<java.version>11</java.version>
-		<kotlin.version>1.5.20</kotlin.version>
+		<kotlin.version>1.5.21</kotlin.version>
 
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
 		<spring-cloud-contract-plugin.version>3.0.1</spring-cloud-contract-plugin.version>
@@ -66,7 +66,23 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
+
+		<!-- TODO -->
+		<repository>
+			<id>spring-release</id>
+			<name>Spring release</name>
+			<url>https://repo.spring.io/release</url>
+		</repository>
 	</repositories>
+
+	<!-- TODO -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-release</id>
+			<name>Spring release</name>
+			<url>https://repo.spring.io/release</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 
 	<!-- =================  Dependency Management ================= -->
@@ -85,6 +101,18 @@
 
 	<!-- =================  Dependencies ================= -->
 	<dependencies>
+
+
+		<!-- TODO -->
+		<dependency>
+			<groupId>org.springframework.experimental</groupId>
+			<artifactId>spring-native</artifactId>
+			<version>0.10.2</version>
+		</dependency>
+
+
+
+
 		<!-- // KBOOT START ######## -->
 		<dependency>
 			<groupId>ch.keepcalm.security</groupId>
@@ -297,6 +325,9 @@
 		</dependency>
 	</dependencies>
 
+
+
+
 	<!-- =================  Build ================= -->
 	<build>
 		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
@@ -325,16 +356,90 @@
 							<version>${project.version}</version>
 							<packaging>jar</packaging>
 							<classifier>stubs</classifier>
-							<!--
-							<url></url>
-							<repositoryId></repositoryId>
-							-->
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-			<!--	Spring Boot Maven		-->
+			<!-- git-commit-id-plugin -->
 			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+			</plugin>
+			<!--	Spring Boot Maven		-->
+			<!-- TODO -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<builder>paketobuildpacks/builder:tiny</builder>
+						<env>
+							<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
+							<BP_NATIVE_IMAGE_BUILD_ARGUMENTS></BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+						</env>
+					</image>
+				</configuration>
+			</plugin>
+
+			<!-- TODO -->
+			<plugin>
+				<groupId>org.springframework.experimental</groupId>
+				<artifactId>spring-aot-maven-plugin</artifactId>
+				<version>0.10.2</version>
+				<executions>
+					<!--<execution>
+						<id>test-generate</id>
+						<goals>
+							<goal>test-generate</goal>
+						</goals>
+					</execution>-->
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<!--<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<builder>paketobuildpacks/builder:tiny</builder>
+						<env>
+							<BP_JAVA_VERSION>11.*</BP_JAVA_VERSION>
+							<BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+								&#45;&#45;enable-url-protocols=https
+							</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+							<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
+						</env>
+					</image>
+				</configuration>
+			</plugin>-->
+				<!--
+				<configuration>
+					<image>
+						<builder>paketobuildpacks/builder:tiny</builder>
+						<env>
+							<BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+								&#45;&#45;enable-url-protocols=https
+							</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+							<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
+						</env>
+					</image>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+				-->
+
+<!--			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<executions>
@@ -345,7 +450,17 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+				&lt;!&ndash; Build Pack &ndash;&gt;
+				<configuration>
+					<image>
+						<builder>paketobuildpacks/builder:tiny</builder>
+						<env>
+							<BP_BOOT_NATIVE_IMAGE_ARGUMENTS>&#45;&#45;enable-urlprotools=https</BP_BOOT_NATIVE_IMAGE_ARGUMENTS>
+							<BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
+						</env>
+					</image>
+				</configuration>
+			</plugin>-->
 
 			<!-- Kotlin -->
 			<plugin>
@@ -445,9 +560,11 @@
 	<profiles>
 		<profile>
 			<id>standalone</id>
+			<!--
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			-->
 			<dependencies>
 				<!-- Standalone Stubrunner  -->
 				<dependency>

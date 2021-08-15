@@ -6,4 +6,4 @@ FOLDER=`pwd`
 
 set -e
 
-./mvnw clean package ${@} -Pintegrationjib,contracts,documentation
+./mvnw clean spring-boot:build-image ${@} -Pcontracts,documentation,integration

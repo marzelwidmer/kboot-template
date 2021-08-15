@@ -16,6 +16,7 @@ options=(
   "Run Integration and Contracts Tests"
   "Run Integration and Contracts Test and generate Documentation"
   "Create Docker Image"
+  "Create Native Image"
   "Login AKS Container Registry"
   "Deploy to AKS"
   "Quit"
@@ -97,6 +98,15 @@ do
             echo ": Create Docker Image :"
             echo "-----------------------"
             "./scripts/buildDockerImage.sh"
+            break
+            ;;
+
+
+        "Create Native Image")
+            echo ""
+            echo ": Create Native Image :"
+            echo "-----------------------"
+            "./scripts/buildNativeImage.sh"
             break
             ;;
 
