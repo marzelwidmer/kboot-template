@@ -45,9 +45,16 @@ CAUTION: Traefik have to be installed for the Ingress Deployment
  7) Run Integration and Contracts Tests
  8) Run Integration and Contracts Test and generate Documentation
  9) Create Docker Image
-10) Login AKS Container Registry
-11) Deploy to AKS
-12) Quit
+10) K3D - Create Cluster
+11) K3D - Install Ingress
+12) K3D - Install Sealed Secret Operator
+13) K3D - Download Sealed Secret CRT
+14) K3D - Generate Sealed Secret
+15) K3D - Install Sealed Secret
+16) K3D - Check Sealed Secret
+17) Login AKS Container Registry
+18) Deploy to AKS
+19) Quit
 Please enter your choice:
 ```
 
@@ -59,6 +66,10 @@ http://aks.c3smonkey.ch/demo[http://aks.c3smonkey.ch/demo]
 SPRING_PROFILES_ACTIVE=standalone mvn clean spring-boot:run
 ```
 
+== Deploy to Dockerhub
+```bash
+./mvnw compile jib:build -Dimage=c3smonkey/demo-service:latest -Pjib
+```
 
 = Clean- Onion- Hexagonal Architecture
 
@@ -105,7 +116,7 @@ Communication with external technologies/Systems is placed in the _Infrastructur
 ----
 
 <1> Service documentation
-<2> Contracts tests `presentation` API
+<2> Contract tests `presentation` API
 <3> Integration tests
 <4> Application implementation
 <5> Unit tests

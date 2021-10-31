@@ -16,6 +16,13 @@ options=(
   "Run Integration and Contracts Tests"
   "Run Integration and Contracts Test and generate Documentation"
   "Create Docker Image"
+  "K3D - Create Cluster"
+  "K3D - Install Ingress"
+  "K3D - Install Sealed Secret Operator"
+  "K3D - Download Sealed Secret CRT"
+  "K3D - Generate Sealed Secret"
+  "K3D - Install Sealed Secret"
+  "K3D - Check Sealed Secret"
   "Login AKS Container Registry"
   "Deploy to AKS"
   "Quit"
@@ -99,6 +106,37 @@ do
             "./scripts/buildDockerImage.sh"
             break
             ;;
+
+
+        "K3D - Create Cluster")
+            "./scripts/k3d_create-cluster.sh"
+            break
+            ;;
+        "K3D - Install Ingress")
+            "./scripts/k3d_ingress-install.sh"
+            break
+            ;;
+        "K3D - Install Sealed Secret Operator")
+          "./scripts/k3d_sealed-secret-install-operator.sh"
+          break
+          ;;
+        "K3D - Download Sealed Secret CRT")
+          "./scripts/k3d_sealed-secret-download-crt.sh"
+          break
+          ;;
+        "K3D - Generate Sealed Secret")
+          "./scripts/k3d_sealed-secret-generate-secret.sh"
+          break
+          ;;
+         "K3D - Install Sealed Secret")
+          "./scripts/k3d_sealed-secret-install-secret.sh"
+          break
+          ;;
+         "K3D - Check Sealed Secret")
+          "./scripts/k3d_sealed-secret-check-installed-secret.sh"
+          break
+          ;;
+
 
 
         "Login AKS Container Registry")

@@ -9,7 +9,8 @@ spec:
         - name: demo-service
           env:
             - name: JAVA_TOOL_OPTIONS
-              value: "-Djavax.net.ssl.trustStoreType=JKS -Xms768m -Xmx768m -XX:MaxMetaspaceSize=256M
+              value: "-Djavax.net.ssl.trustStoreType=JKS
+                      -Xms700m -Xmx700m -XX:MaxMetaspaceSize=256M
                       -Duser.timezone='Europe/Zurich'
                       "
 #              value: "-Djavax.net.ssl.trustStore=/mnt/truststore/kboot-truststore.jks
@@ -23,7 +24,7 @@ spec:
 #      volumes:
 #        - name: demo-truststore
 #          secret:
-#            defaultMode: 420
+#            defaultMode: 420Ω
 #            items:
 #              - key: truststore.jks
 #                path: demo-truststore.jks

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.3</version>
+		<version>2.5.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -23,7 +23,7 @@
 		<java.version>11</java.version>
 		<kotlin.version>1.5.20</kotlin.version>
 
-		<spring-cloud.version>2020.0.3</spring-cloud.version>
+		<spring-cloud.version>2020.0.4</spring-cloud.version>
 		<spring-cloud-contract-plugin.version>3.0.1</spring-cloud-contract-plugin.version>
 
 		<!-- =================  Test ================= -->
@@ -32,16 +32,16 @@
 		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
 
 		<!-- =================  Test libraries ================= -->
-		<mockk.version>1.11.0</mockk.version>
-		<kluent.version>1.65</kluent.version>
-		<testcontainers.version>1.15.1</testcontainers.version>
+		<mockk.version>1.12.0</mockk.version>
+		<kluent.version>1.68</kluent.version>
+		<testcontainers.version>1.16.0</testcontainers.version>
 		<kotest.version>4.4.3</kotest.version>
 		<springmockk.version>3.0.1</springmockk.version>
 		<jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
 		<skipUnitTests>false</skipUnitTests>
 		<blockhound.version>1.0.6.RELEASE</blockhound.version>
 		<javafaker.version>1.0.2</javafaker.version>
-		<mockwebserver.version>3.14.9</mockwebserver.version>
+		<mockwebserver.version>4.9.2</mockwebserver.version>
 		<hamcrest-date.version>2.0.7</hamcrest-date.version>
 	</properties>
 
