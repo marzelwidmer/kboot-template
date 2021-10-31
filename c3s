@@ -23,6 +23,8 @@ options=(
   "K3D - Generate Sealed Secret"
   "K3D - Install Sealed Secret"
   "K3D - Check Sealed Secret"
+  "K3D - Install argo-cd"
+  "K3D - Get Admin Password argo-cd"
   "Login AKS Container Registry"
   "Deploy to AKS"
   "Quit"
@@ -37,7 +39,6 @@ do
             "./scripts/compileOnly.sh"
             break
             ;;
-
         "Run Unit Tests Only")
             echo ""
             echo ": Run Unit Test :"
@@ -45,7 +46,6 @@ do
             "./scripts/unitTestsOnly.sh"
             break
             ;;
-
         "Generate Asciidoc")
             echo ""
             echo ": Generate Asciidoc :"
@@ -53,7 +53,6 @@ do
             "./scripts/generateDocumentation.sh"
             break
             ;;
-
         "Convert Contract Tests")
             echo ""
             echo ": Convert Contract Tests :"
@@ -61,8 +60,6 @@ do
             "./scripts/convertContractTest.sh"
             break
             ;;
-
-
         "Generate Contract Tests")
             echo ""
             echo ": Generate Contract Tests :"
@@ -70,8 +67,6 @@ do
             "./scripts/generateContractTest.sh"
             break
             ;;
-
-
         "Convert Contract, Generate and Run Contract Stubs")
             echo ""
             echo ": Convert Contract, Generate and Run Contract Stubs :"
@@ -79,8 +74,6 @@ do
             "./scripts/runContractStubsTest.sh"
             break
             ;;
-
-
         "Run Integration and Contracts Tests")
             echo ""
             echo ": Run Integration and Contracts Tests :"
@@ -88,8 +81,6 @@ do
             "./scripts/runAll.sh"
             break
             ;;
-
-
         "Run Integration and Contracts Test and generate Documentation")
             echo ""
             echo ": Run Integration and Contracts Test and generate Documentation :"
@@ -97,8 +88,6 @@ do
             "./scripts/runAllWithDocs.sh"
             break
             ;;
-
-
         "Create Docker Image")
             echo ""
             echo ": Create Docker Image :"
@@ -138,15 +127,22 @@ do
           ;;
 
 
+         "K3D - Install argo-cd")
+          "./scripts/k3d_argo-cd-install.sh"
+          break
+          ;;
+         "K3D - Get Admin Password argo-cd")
+          "./scripts/k3d_argo-cd-get-admin-pwd.sh"
+          break
+          ;;
+
+
 
         "Login AKS Container Registry")
-
             "./scripts/loginAKSContainerRegistry.sh"
             break
             ;;
-
         "Deploy to AKS")
-
             "./scripts/deployToAKS.sh"
             break
             ;;
