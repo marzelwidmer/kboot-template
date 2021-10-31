@@ -36,3 +36,4 @@ build/
 .vscode/
 
 .DS_Store
+/k8s/k3d/sealed/tls.crt

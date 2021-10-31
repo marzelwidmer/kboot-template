@@ -1,32 +1,34 @@
-apiVersion: skaffold/v2beta16
+apiVersion: skaffold/v2beta25
 kind: Config
 metadata:
   name: demo-service
 build:
   artifacts:
-    - image: demo-service
-      jib:
-        args:
-          - -Pjib,integration,contracts,documentation
-        type: maven
+  - image: demo-service
+    jib:
+      args:
+      - -Pjib,integration,contracts,documentation
+      fromImage: registry.access.redhat.com/ubi8/openjdk-11:1.3
+      type: maven
   tagPolicy:
-    sha256: { }
-
+    sha256: {}
 deploy:
   kustomize:
     paths:
-      - k8s/installs/minikube
-
+    - k8s/installs/k3d
+    -
 profiles:
-  - name: aks
-    build:
-      artifacts:
-        - image: c3smonkey.azurecr.io/demo-service
-          jib:
-            args:
-              - -Pjib,integration,contracts,documentation
-              - -Dimage=c3smonkey.azurecr.io/demo-service
-    deploy:
-      kustomize:
-        paths:
-          - k8s/installs/aks
+- name: aks
+  build:
+    artifacts:
+    - image: c3smonkey.azurecr.io/demo-service
+      jib:
+        args:
+        - -Pjib,integration,contracts,documentation
+        - -Dimage=c3smonkey.azurecr.io/demo-service
+  deploy:
+    kustomize:
+      paths:
+      - k8s/installs/aks
+
+

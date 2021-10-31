@@ -11,13 +11,14 @@ commonLabels:
 resources:
   - deployment.yaml
   - service.yaml
-  - prometheus
+#  - prometheus
 
 # ConfigMap
 patchesStrategicMerge:
-  - use-mongodb-secret.yaml
-  - use-actuator-secret.yaml
-  - use-java-tool-options.yaml
+#  - use-secrets.yaml
+#  - use-mongodb-secrets.yaml
+#  - use-actuator-secrets.yaml
+#  - use-java-tool-options.yaml
 
 # otherwise the name wil be namePrefix-app-nameSuffix
 patches:
