@@ -1,4 +1,4 @@
-package ch.keepcalm.demo.infrastructure.webapi
+package ch.keepcalm.demo.infrastructure.api
 
 import ch.keepcalm.security.test.WithMockCustomUser
 import org.junit.jupiter.api.BeforeEach

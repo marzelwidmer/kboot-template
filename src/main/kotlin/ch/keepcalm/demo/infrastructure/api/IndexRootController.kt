@@ -1,4 +1,4 @@
-package ch.keepcalm.demo.infrastructure.webapi
+package ch.keepcalm.demo.infrastructure.api
 
 import kotlinx.coroutines.reactive.awaitSingle
 import org.springframework.hateoas.EntityModel
