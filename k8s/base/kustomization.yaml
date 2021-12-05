@@ -10,11 +10,12 @@ commonLabels:
 # Resources
 resources:
   - deployment.yaml
-  - service.yaml
+#  - prometheus-service.yaml
 #  - prometheus
 
 # ConfigMap
 patchesStrategicMerge:
+  - use-rediness-probe.yaml
 #  - use-secrets.yaml
 #  - use-mongodb-secrets.yaml
 #  - use-actuator-secrets.yaml
