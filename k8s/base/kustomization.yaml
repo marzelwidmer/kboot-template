@@ -10,7 +10,7 @@ commonLabels:
 # Resources
 resources:
   - deployment.yaml
-#  - prometheus-service.yaml
+  - service.yaml
 #  - prometheus
 
 # ConfigMap
