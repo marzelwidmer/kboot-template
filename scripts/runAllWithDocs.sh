@@ -6,4 +6,4 @@ FOLDER=`pwd`
 
 set -e
 
-./mvnw clean package -Pcontracts,integration,documentation
+./mvnw clean package -Pcontracts,integration,documentation -U
