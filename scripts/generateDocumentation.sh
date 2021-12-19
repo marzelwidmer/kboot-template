@@ -6,4 +6,4 @@ FOLDER=`pwd`
 
 set -e
 
-./mvnw clean asciidoctor:process-asciidoc -Pdocumentation
+./mvnw clean asciidoctor:process-asciidoc -Pdocumentation -U

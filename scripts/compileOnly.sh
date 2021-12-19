@@ -7,4 +7,4 @@ FOLDER=`pwd`
 
 set -e
 
-./mvnw clean compile
+./mvnw clean compile -U

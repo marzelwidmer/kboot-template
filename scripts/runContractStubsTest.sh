@@ -6,4 +6,4 @@ FOLDER=`pwd`
 
 set -e
 
-./mvnw clean -Pcontracts spring-cloud-contract:convert spring-cloud-contract:generateTests spring-cloud-contract:generateStubs spring-cloud-contract:run
+./mvnw clean -Pcontracts spring-cloud-contract:convert spring-cloud-contract:generateTests spring-cloud-contract:generateStubs spring-cloud-contract:run -U

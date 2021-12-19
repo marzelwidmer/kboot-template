@@ -6,4 +6,4 @@ FOLDER=`pwd`
 
 set -e
 
-./mvnw clean -Pcontracts spring-cloud-contract:convert
+./mvnw clean -Pcontracts spring-cloud-contract:convert -U
