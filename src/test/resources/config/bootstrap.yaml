@@ -4,8 +4,7 @@ spring:
 
   cloud:
     kubernetes:
-      enabled: false
-    config:
-      enabled: false
-      discovery:
+      config:
+        enabled: false
+      reload:
         enabled: false
