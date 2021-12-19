@@ -10,8 +10,10 @@ server:
 spring:
   profiles:
     active: default
-    include: common
-
+  config:
+    import:
+      - classpath:config/common.yaml
+      -
   security:
     user:
       roles: ACTUATOR
@@ -20,6 +22,7 @@ spring:
     mongodb:
       database: demo-db
       auto-index-creation: true
+
 
 ---
 spring:
