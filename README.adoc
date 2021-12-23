@@ -132,13 +132,13 @@ Communication with external technologies/Systems is placed in the _Infrastructur
     ├── exception
     ├── persistence <4>
     │   └── mongo <5>
-    ├── webapi <6>
-    └── webclient <7>
+    ├── api <6>
+    └── client <7>
 ----
 
 <1> Application services responsible for providing access to the domain to external clients. An application service orchestrates use cases, but does not contain business logic.
 <2> Entity, ValueObject `DDD` Core Domain Model
-<3> Infrastructure services. An infrastructure service provides functionality to the domain that requires additional infrastructure only available outside of the domain. The infrastructure service interface forms part of the domain, the implementation is part of the infrastructure.
+<3> Infrastructure services. An infrastructure service provides functionality to the domain that requires additional infrastructure only available outside the domain. The infrastructure service interface forms part of the domain, the implementation is part of the infrastructure.
 <4> Persistence logic
 <5> `MongoDB` implementation of the persistence logic
 <6> `Presentation` implementation of the presentation API

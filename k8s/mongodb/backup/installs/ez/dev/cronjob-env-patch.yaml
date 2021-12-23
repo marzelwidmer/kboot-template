@@ -1,0 +1,31 @@
+- op: add
+  path: "/spec/jobTemplate/spec/template/spec/containers/0/env/-"
+  value:
+    name: MONGODB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: mongodb
+        key: mongodb-root-password
+- op: add
+  path: "/spec/jobTemplate/spec/template/spec/containers/0/env/-"
+  value:
+    name: DATABASE_NAME
+    value: registrierung-service-db
+- op: add
+  path: "/spec/jobTemplate/spec/template/spec/containers/0/env/-"
+  value:
+    name: DATABASE_BACKUP_KEEP
+    value: "5"
+- op: add
+  path: "/spec/jobTemplate/spec/template/spec/containers/0/env/-"
+  value:
+    name: DATABASE_HOST
+    value: "rs0/10.129.65.11,10.129.65.12,10.129.65.13"
+- op: add
+  path: "/spec/jobTemplate/spec/template/spec/containers/0/env/-"
+  value:
+    name: DATABASE_PORT
+    value: "27017"
+- op: replace
+  path: "/spec/schedule"
+  value: "*/15 * * * *"

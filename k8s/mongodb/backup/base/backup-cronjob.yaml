@@ -1,0 +1,42 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    app: app
+  name: app
+spec:
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          metadata:
+            labels:
+              app: app
+          containers:
+            - command:
+                - bash
+                - -c
+                - |
+                  trap "echo Backup failed; exit 0" ERR;
+                  ls -rdt /mongodb-backup/mongodb-${DATABASE_NAME}-* | head -n -${DATABASE_BACKUP_KEEP} | xargs rm -rf;
+                  DIR=/mongodb-backup/mongodb-${DATABASE_NAME}-`date +%Y-%m-%d_%H%M%S`;
+                  mongodump -j 1 --username root --password ${MONGODB_PASSWORD} --host ${DATABASE_HOST} --port ${DATABASE_PORT} --authenticationDatabase admin --gzip --db ${DATABASE_NAME} --out ${DIR};
+                  echo "";
+                  echo "Backup successful"; du -h $DIR;
+                  echo "to restore the backup to the serviced host use: $ mongorestore --username root --password *** --host ${DATABASE_HOST} --port ${DATABASE_PORT} --authenticationDatabase admin --gzip --drop --db ${DATABASE_NAME} ${DIR}/${DATABASE_NAME}"
+              env:
+                - name: TZ
+                  value: Europe/Zurich
+              image: docker-registry.default.svc:5000/myhelsana-build-dz/mongodb:4.4.1-debian-10-r13
+              imagePullPolicy: IfNotPresent
+              name: mongodb-backup
+              volumeMounts:
+                - mountPath: /mongodb-backup
+                  name: mongodb-backup
+          restartPolicy: Never
+          volumes:
+            - name: mongodb-backup
+              persistentVolumeClaim:
+                claimName: mongodb-backup-pvc
+  schedule: "30 * * * *"

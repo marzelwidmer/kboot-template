@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  app: registrierung-mongodb-backup
+  appGroup: myhelsana
+
+# Resources
+resources:
+  - persistent-volume-claim.yaml
+  - backup-cronjob.yaml
+
+## Used for splunk forwarding
+commonAnnotations:
+  splunk.com/index: myhelsana
+
+# otherwise the name wil be namePrefix-app-nameSuffix
+patches:
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: registrierung-mongodb-backup
+    target:
+      kind: CronJob
+      name: .*

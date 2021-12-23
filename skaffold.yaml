@@ -8,7 +8,7 @@ build:
     jib:
       args:
       - -Pjib,integration,contracts,documentation
-      fromImage: registry.access.redhat.com/ubi8/openjdk-11:1.3
+      fromImage: registry.access.redhat.com/ubi8/openjdk-11-runtime:1.10-10
       type: maven
   tagPolicy:
     sha256: {}
@@ -30,18 +30,3 @@ profiles:
     kustomize:
       paths:
       - k8s/installs/aks
-
-- name: os4
-  build:
-    artifacts:
-      - image: default-route-openshift-image-registry.apps-crc.testing/demo/demo-service
-        jib:
-          args:
-            - -Pjib,integration,contracts,documentation
-            - -Dimage=image-registry.openshift-image-registry.svc:5000/demo/demo-service
-    insecureRegistries: [ "default-route-openshift-image-registry.apps-crc.testing" ]
-
-  deploy:
-    kustomize:
-      paths:
-        - k8s/installs/os4

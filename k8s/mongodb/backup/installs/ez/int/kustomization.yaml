@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: myhelsana-int-ez
+
+commonLabels:
+  app: registrierung-service
+  appGroup: myhelsana
+
+resources:
+  - ../../../base
+
+
+patches:
+  - path: cronjob-env-patch.yaml
+    target:
+      kind: CronJob
+      name: registrierung-mongodb-backup
+  - path: persistent-volume-patch.yaml
+    target:
+      kind: PersistentVolumeClaim
+      name: mongodb-backup-pvc
