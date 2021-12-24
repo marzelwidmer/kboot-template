@@ -13,7 +13,7 @@ spring:
   config:
     import:
       - classpath:config/common.yaml
-      -
+
   security:
     user:
       roles: ACTUATOR
