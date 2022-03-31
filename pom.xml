@@ -26,6 +26,9 @@
 		<spring-cloud.version>2021.0.1</spring-cloud.version>
 		<spring-cloud-contract-plugin.version>3.0.1</spring-cloud-contract-plugin.version>
 
+		<jmolecules-bom.version>2021.2.1</jmolecules-bom.version>
+		<kotlin-logging-jvm.version>2.1.21</kotlin-logging-jvm.version>
+
 		<!-- =================  Test ================= -->
 		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
@@ -44,7 +47,6 @@
 		<mockwebserver.version>4.9.2</mockwebserver.version>
 		<hamcrest-date.version>2.0.7</hamcrest-date.version>
 		<kboot-starter-security.version>0.3.1</kboot-starter-security.version>
-		<jmolecules-bom.version>2021.2.1</jmolecules-bom.version>
 	</properties>
 
 
@@ -114,6 +116,19 @@
 		</dependency>
 		<!-- // KBOOT END ########  -->
 
+
+		<!-- Logger -->
+		<dependency>
+			<groupId>io.github.microutils</groupId>
+			<artifactId>kotlin-logging-jvm</artifactId>
+			<version>${kotlin-logging-jvm.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.jetbrains.kotlin</groupId>
+					<artifactId>kotlin-stdlib</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 		<!-- jMolecules -->
 		<dependency>
