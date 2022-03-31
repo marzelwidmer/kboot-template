@@ -9,7 +9,6 @@ spring:
 
       discovery:
         enabled: true
-
 ---
 spring:
   config:
@@ -22,3 +21,8 @@ spring:
         enabled: false
       reload:
         enabled: false
+      enabled: false
+
+logging:
+  level:
+    WireMock: warn
