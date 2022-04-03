@@ -488,9 +488,6 @@
 	<profiles>
 		<profile>
 			<id>standalone</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<dependencies>
 				<!-- Standalone Stubrunner  -->
 				<dependency>
