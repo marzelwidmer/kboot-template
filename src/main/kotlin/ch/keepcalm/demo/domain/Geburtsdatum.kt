@@ -1,10 +1,8 @@
 package ch.keepcalm.demo.domain
 
-import org.jmolecules.ddd.annotation.ValueObject
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 
-@ValueObject
 @JvmInline
 value class Geburtsdatum(val value: LocalDate) {
     init {
