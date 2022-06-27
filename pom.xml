@@ -514,6 +514,9 @@
 		<!-- =================  Contracts ================= -->
 		<profile>
 			<id>contracts</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<dependencies>
 				<!-- Contracts -->
 				<dependency>
@@ -649,6 +652,9 @@
 		<!-- =================  Integration ================= -->
 		<profile>
 			<id>integration</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<dependencies>
 				<!--  Used For Spring Contracts with WEBTESTCLIENT testMode  -->
 				<dependency>
@@ -730,6 +736,9 @@
 		<!-- =================  Documentation | asciidoc ================= -->
 		<profile>
 			<id>documentation</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<!-- Asciidoc -->
 				<asciidoctor.maven.plugin.version>2.1.0</asciidoctor.maven.plugin.version>
