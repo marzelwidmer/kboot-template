@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      database: pendenzen-service-db
+      auto-index-creation: true

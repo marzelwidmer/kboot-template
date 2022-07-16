@@ -15,13 +15,11 @@ class IndexRootController {
 
     companion object REL {
         const val API_DOCS_REL = "documentation"
-        const val API_FOOBAR_REL = "foobar"
     }
 
     @GetMapping("/", produces = [MediaTypes.HAL_JSON_VALUE])
     suspend fun index(): EntityModel<Unit> {
         return EntityModel.of(Unit, linkTo(methodOn(IndexRootController::class.java).index()).withSelfRel().toMono().awaitSingle())
             .add(linkTo(methodOn(IndexRootController::class.java).index()).slash("/api-docs/manual.html").withRel(API_DOCS_REL).toMono().awaitSingle())
-            .add(linkTo(methodOn(FooBarController::class.java).fooBar()).withRel(API_FOOBAR_REL).toMono().awaitSingle())
     }
 }

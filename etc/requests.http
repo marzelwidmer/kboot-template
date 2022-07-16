@@ -1,6 +1,0 @@
-#####
-#
-# GET Root Index
-#
-GET http://localhost:8080/
-Content-Type: application/json

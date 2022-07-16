@@ -13,6 +13,7 @@ spring:
   config:
     import:
       - classpath:config/common.yaml
+      - classpath:config/mongodb.yaml
 
   security:
     user:

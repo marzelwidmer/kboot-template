@@ -40,7 +40,7 @@ class RootControllerTest(private var webTestClient: WebTestClient) {
     }
 
     @Test
-    fun `Should give back the index controller`() {
+    fun `should give back the index controller`() {
         webTestClient.get()
             .uri("/")
             .exchange()
@@ -53,7 +53,6 @@ class RootControllerTest(private var webTestClient: WebTestClient) {
                     links(
                         linkWithRel("self").description("Canonical link for this resource"),
                         linkWithRel("documentation").description("The <<resources_documentation,API Documentation>> resource"),
-                        linkWithRel("foobar").description("The <<resources_documentation,API FooBar Resource>> resource"),
                     ), responseFields(
                         subsectionWithPath("_links").description("Links to other resources")
                     )

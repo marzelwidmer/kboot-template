@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="http rest call" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" folderName="RestClient" path="$PROJECT_DIR$/etc/rest-client/requests.http" requestIdentifier="GET Root Index --&gt; Successful test: check response status is 200">
+    <method v="2" />
+  </configuration>
+</component>

@@ -14,11 +14,8 @@ spring:
 spring:
   config:
     activate:
-      on-profile: standalone
+      on-profile: standalone, docker
 
   cloud:
     kubernetes:
-      config:
-        enabled: false
-      reload:
-        enabled: false
+      enabled: false
