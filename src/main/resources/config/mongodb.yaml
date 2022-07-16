@@ -1,5 +1,5 @@
 spring:
   data:
     mongodb:
-      database: pendenzen-service-db
+      database: demo-service-db
       auto-index-creation: true

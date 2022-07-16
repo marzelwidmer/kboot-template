@@ -8,3 +8,37 @@ client.test("Request executed successfully", function() {
 });
 
 %}
+
+
+
+### Create complaint --> Successful test: check response status is 201
+POST http://localhost:8080/api/complaint
+Content-Type: application/json
+
+{
+  "company": "Apple",
+  "description": "Apple inc."
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+
+%}
+
+
+
+
+
+### GET all complaint--> Successful test: check response status is 200
+GET http://localhost:8080/api/complaint
+Content-Type: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+
+%}
+
