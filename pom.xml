@@ -153,22 +153,22 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!--	AXON Reactor	-->
 		<dependency>
 			<groupId>org.axonframework.extensions.reactor</groupId>
 			<artifactId>axon-reactor-spring-boot-starter</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.axonframework.extensions.kotlin</groupId>
-			<artifactId>axon-kotlin</artifactId>
-		</dependency>
+		<!--	AXON MongoDB	-->
 		<dependency>
 			<groupId>org.axonframework.extensions.mongo</groupId>
 			<artifactId>axon-mongo</artifactId>
 		</dependency>
+		<!--	AXON Micrometer	-->
 		<dependency>
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-micrometer</artifactId>
 		</dependency>
+
 		<!--	AXON TEST	-->
 		<dependency>
 			<groupId>org.axonframework</groupId>
@@ -195,9 +195,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
 		</dependency>
-
-
-		<!--Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
