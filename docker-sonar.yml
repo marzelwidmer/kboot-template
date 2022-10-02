@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+
+  sonarqube:
+    image: "sonarqube:latest"
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+#
+#   Start Sonar:
+#
+#   docker-compose -f docker-sonar.yml up
+#
+#   Wait for the server to start and log in to SonarQube server on http://localhost:9000
+#   using default credentials: login: admin password: admin
+#   Go to: http://localhost:9000/account/security/ change pwd and generate a token.
+#
+#
+#   Maven Sonar:
+#
+#mvn clean package sonar:sonar \
+# -Dsonar.projectKey=demo-service \
+# -Dsonar.host.url=http://localhost:9000 \
+# -Dsonar.login=2b1aa106c75314cf1dde5a6d573f4d4a5613fe62 \
+# -Pcontracts,integration,documentation

@@ -2,11 +2,9 @@ spring:
   config:
     activate:
       on-profile: standalone
-
   mongodb:
     embedded:
-      version: 3.2.3
-
-logging:
-  level:
-    root: INFO
+      version: 5.0.6
+  data:
+    mongodb:
+      port: 27017
